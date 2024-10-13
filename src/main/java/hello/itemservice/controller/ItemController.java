@@ -43,4 +43,11 @@ public class ItemController {
     public ItemResponseDto updateItem(@PathVariable Long itemId, @RequestBody ItemRequestDto requestDto) {
         return itemService.update(itemId,requestDto);
     }
+
+    //item 삭제
+    @DeleteMapping("/item/{itemId}")
+    public String deleteItem(@PathVariable Long itemId) {
+        itemService.delete(itemId);
+        return "Item 삭제 성공";
+    }
 }

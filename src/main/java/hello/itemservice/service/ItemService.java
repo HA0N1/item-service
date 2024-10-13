@@ -54,4 +54,13 @@ public class ItemService {
             throw new IllegalArgumentException("유효하지 않은 아이템 정보입니다.");
         }
     }
+
+    public void delete(Long itemId) {
+        Item item = findById(itemId);
+        if (item != null) {
+            itemRepo.deleteById(itemId);
+        } else {
+            throw new IllegalArgumentException("유효하지 않은 아이템 정보입니다.");
+        }
+    }
 }
