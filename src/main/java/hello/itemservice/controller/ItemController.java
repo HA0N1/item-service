@@ -21,9 +21,7 @@ public class ItemController {
     // item 단건 조회
     @GetMapping("/item/{itemId}")
     public ItemResponseDto findById(@PathVariable Long itemId) {
-        Item item = itemService.findById(itemId);
-        ItemResponseDto responseDto = new ItemResponseDto(item);
-        return responseDto;
+        return new ItemResponseDto(itemService.findById(itemId));
     }
 
     // item 저장
