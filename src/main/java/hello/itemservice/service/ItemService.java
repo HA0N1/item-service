@@ -38,4 +38,20 @@ public class ItemService {
                 .map(ItemResponseDto::new)
                 .collect(Collectors.toList());
     }
+
+    public ItemResponseDto update(Long itemId, ItemRequestDto requestDto) {
+        Item item = findById(itemId);
+        if (item != null) {
+            if (requestDto.getName() != null) {
+                item.setName(requestDto.getName());
+            }
+            if (requestDto.getPrice() != null) {
+                item.setPrice(requestDto.getPrice());
+            }
+            Item updatedItem = itemRepo.save(item);
+            return new ItemResponseDto(updatedItem);
+        } else {
+            throw new IllegalArgumentException("유효하지 않은 아이템 정보입니다.");
+        }
+    }
 }

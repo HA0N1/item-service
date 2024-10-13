@@ -37,4 +37,10 @@ public class ItemController {
     public List<ItemResponseDto> findAll() {
         return itemService.findAll();
     }
+
+    //item 수정
+    @PatchMapping("/item/{itemId}")
+    public ItemResponseDto updateItem(@PathVariable Long itemId, @RequestBody ItemRequestDto requestDto) {
+        return itemService.update(itemId,requestDto);
+    }
 }
